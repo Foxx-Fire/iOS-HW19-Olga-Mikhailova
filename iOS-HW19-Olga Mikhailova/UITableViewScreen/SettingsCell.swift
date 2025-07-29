@@ -102,11 +102,11 @@ final class SettingsCell: UITableViewCell {
     
     private func setupLayout() {
         NSLayoutConstraint.activate([
-        contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+        contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 18),
         contentStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         contentStack.trailingAnchor.constraint(lessThanOrEqualTo: subtitleLabel.leadingAnchor, constant: -25),
         
-        redRound.leadingAnchor.constraint(equalTo: contentStack.trailingAnchor, constant: 18),
+        redRound.leadingAnchor.constraint(equalTo: contentStack.trailingAnchor, constant: 215),
         redRound.centerYAnchor.constraint(equalTo: contentStack.centerYAnchor),
         redRound.widthAnchor.constraint(greaterThanOrEqualToConstant: 20),
         redRound.heightAnchor.constraint(equalToConstant: 20),

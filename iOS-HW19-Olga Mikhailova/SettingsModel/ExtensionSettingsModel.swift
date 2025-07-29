@@ -45,8 +45,8 @@ extension SettingsModel {
          SettingsModel(
             image: UIImage(systemName: "network.badge.shield.half.filled") ?? UIImage(),
             settings: .vpn,
-            hasSwitch: false,
-            hasChevron: true
+            hasSwitch: true,
+            hasChevron: false
          )
         ],
         // 2 block
@@ -65,8 +65,8 @@ extension SettingsModel {
          SettingsModel(
             image: UIImage(systemName: "moon") ?? UIImage(),
             settings: .doNotDisturb,
-            hasSwitch: true,
-            hasChevron: false
+            hasSwitch: false,
+            hasChevron: true
          ),
          SettingsModel(
             image: UIImage(systemName: "hourglass") ?? UIImage(),
