@@ -32,4 +32,5 @@ struct SettingsModel: Hashable {
     var hasSwitch: Bool
     var hasChevron: Bool
     var subtitle: String?
+    var redRound: String?
 }

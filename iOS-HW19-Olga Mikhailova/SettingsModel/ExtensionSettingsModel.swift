@@ -80,9 +80,8 @@ extension SettingsModel {
             image: UIImage(systemName: "gear") ?? UIImage(),
             settings: .general,
             hasSwitch: false,
-            hasChevron: true
-            //MARK: -  todo
-            // redRound
+            hasChevron: true,
+            redRound: "1"
         ),
          SettingsModel(
             image: UIImage(systemName: "switch.2") ?? UIImage(),

@@ -64,6 +64,19 @@ final class SettingsCell: UITableViewCell {
         return image
     }()
     
+    private lazy var redRound: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = .white
+        label.backgroundColor = .systemRed
+        label.textAlignment = .center
+        label.layer.cornerRadius = 10
+        label.clipsToBounds = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        return label
+    }()
+    
     // MARK: - Initialization
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -81,6 +94,7 @@ final class SettingsCell: UITableViewCell {
     
     private func setupHierarchy() {
         contentView.addSubview(contentStack)
+        contentView.addSubview(redRound)
         contentView.addSubview(subtitleLabel)
         contentView.addSubview(switchControl)
         contentView.addSubview(chevronImageView)
@@ -91,6 +105,11 @@ final class SettingsCell: UITableViewCell {
         contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
         contentStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         contentStack.trailingAnchor.constraint(lessThanOrEqualTo: subtitleLabel.leadingAnchor, constant: -25),
+        
+        redRound.leadingAnchor.constraint(equalTo: contentStack.trailingAnchor, constant: 18),
+        redRound.centerYAnchor.constraint(equalTo: contentStack.centerYAnchor),
+        redRound.widthAnchor.constraint(greaterThanOrEqualToConstant: 20),
+        redRound.heightAnchor.constraint(equalToConstant: 20),
         
         subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
         subtitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -110,6 +129,8 @@ final class SettingsCell: UITableViewCell {
         
         iconImageView.image = settings.image
         titleLabel.text = settings.settings.rawValue
+        redRound.text = settings.redRound
+        redRound.isHidden = settings.redRound == nil
         subtitleLabel.text = settings.subtitle
         subtitleLabel.isHidden = settings.subtitle == nil
         switchControl.isOn = settings.hasSwitch
@@ -133,5 +154,7 @@ final class SettingsCell: UITableViewCell {
         subtitleLabel.text = nil
         subtitleLabel.isHidden = true
         switchControl.isOn = false
+        redRound.text = nil
+        redRound.isHidden = true
     }
 }
