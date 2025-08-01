@@ -26,8 +26,29 @@ enum SettingsSections: String, CaseIterable {
     case wallpaper = "Обои"
 }
 
+enum BackgroundColors {
+    case orange
+    case blue
+    case green
+    case red
+    case gray
+    case purple
+    
+    var uiColor: UIColor {
+        switch self {
+        case .orange: return .systemOrange
+        case .blue: return .systemBlue
+        case .green: return .systemGreen
+        case .red: return .systemRed
+        case .gray: return .systemGray
+        case .purple: return .systemPurple
+        }
+    }
+}
+
 struct SettingsModel: Hashable {
     var image: UIImage
+    var color: BackgroundColors
     var settings: SettingsSections
     var hasSwitch: Bool
     var hasChevron: Bool
