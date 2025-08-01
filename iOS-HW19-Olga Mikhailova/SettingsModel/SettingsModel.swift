@@ -46,6 +46,25 @@ enum BackgroundColors {
     }
 }
 
+enum SettingsSectionType {
+    case airplaneMode
+    case wifi
+    case bluetooth
+    case cellular
+    case personalHotspot
+    case vpn
+    case notifications
+    case sounds
+    case doNotDisturb
+    case screenTime
+    case general
+    case controlCenter
+    case display
+    case homeScreen
+    case universalAccess
+    case wallpaper
+}
+
 struct SettingsModel: Hashable {
     var image: UIImage
     var color: BackgroundColors
@@ -54,4 +73,5 @@ struct SettingsModel: Hashable {
     var hasChevron: Bool
     var subtitle: String?
     var redRound: String?
+    let sectionType: SettingsSectionType
 }
