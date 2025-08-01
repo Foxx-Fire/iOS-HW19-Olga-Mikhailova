@@ -26,7 +26,7 @@ extension SettingsModel {
             subtitle: "Не подключено"
          ),
          SettingsModel(
-            image: UIImage(systemName: "bluetooth") ?? UIImage(),
+            image: UIImage(named: "bluetooth") ?? UIImage(),
             color: .blue,
             settings: .bluetooth,
             hasSwitch: false,
@@ -48,7 +48,7 @@ extension SettingsModel {
             hasChevron: true
          ),
          SettingsModel(
-            image: UIImage(systemName: "network.badge.shield.half.filled") ?? UIImage(),
+            image: UIImage(named: "vpn") ?? UIImage(),
             color: .blue,
             settings: .vpn,
             hasSwitch: true,
@@ -57,21 +57,21 @@ extension SettingsModel {
         ],
         // 2 block
         [SettingsModel(
-            image: UIImage(systemName: "bell.badge") ?? UIImage(),
+            image: UIImage(systemName: "arrow.rectanglepath") ?? UIImage(),
             color: .red,
             settings: .notifications,
             hasSwitch: false,
             hasChevron: true
         ),
          SettingsModel(
-            image: UIImage(systemName: "speaker.wave.3") ?? UIImage(),
+            image: UIImage(systemName: "speaker.wave.3.fill") ?? UIImage(),
             color: .red,
             settings: .sounds,
             hasSwitch: false,
             hasChevron: true
          ),
          SettingsModel(
-            image: UIImage(systemName: "moon") ?? UIImage(),
+            image: UIImage(systemName: "moon.fill") ?? UIImage(),
             color: .purple,
             settings: .doNotDisturb,
             hasSwitch: false,
@@ -87,7 +87,7 @@ extension SettingsModel {
         ],
         // 3 block
         [SettingsModel(
-            image: UIImage(systemName: "gear") ?? UIImage(),
+            image: UIImage(systemName: "gearshape") ?? UIImage(),
             color: .gray,
             settings: .general,
             hasSwitch: false,
@@ -95,7 +95,7 @@ extension SettingsModel {
             redRound: "1"
         ),
          SettingsModel(
-            image: UIImage(systemName: "switch.2") ?? UIImage(),
+            image: UIImage(systemName: "slider.horizontal.2.square.on.square") ?? UIImage(),
             color: .gray,
             settings: .controlCenter,
             hasSwitch: false,
@@ -109,7 +109,7 @@ extension SettingsModel {
             hasChevron: true
          ),
          SettingsModel(
-            image: UIImage(systemName: "apps.ipad") ?? UIImage(),
+            image: UIImage(systemName: "square.grid.3x3.middle.filled") ?? UIImage(),
             color: .blue,
             settings: .homeScreen,
             hasSwitch: false,
