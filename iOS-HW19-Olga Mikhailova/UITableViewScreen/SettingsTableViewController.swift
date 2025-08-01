@@ -33,6 +33,7 @@ final class SettingsTableViewController: UITableViewController {
 }
 
 // MARK: - UITableViewDataSource
+
 extension SettingsTableViewController {
     // Количество секций
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,6 +54,7 @@ extension SettingsTableViewController {
 }
 
 // MARK: - UITableViewDelegate
+
 extension SettingsTableViewController {
     // Обработка нажатия на ячейку
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
