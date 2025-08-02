@@ -13,6 +13,8 @@ final class SettingsTableViewController: UITableViewController {
     
     private var settingsData = SettingsModel.settings
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,13 +24,20 @@ final class SettingsTableViewController: UITableViewController {
     // MARK: - Setup
     
     private func setupTableView() {
-        title = "Настройки"
-        tableView.register(SettingsCell.self, forCellReuseIdentifier: "SettingsCell")
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
-        tableView.rowHeight = 44
+        title = Constants.title
+        tableView = UITableView(frame: tableView.frame, style: .grouped)
+        tableView.register(
+            SettingsCell.self,
+            forCellReuseIdentifier: SettingsCell.identifier
+        )
+        tableView.separatorInset = Constants.separatorInsets
+        tableView.rowHeight = Constants.rowHeight
+        tableView.backgroundColor = .white
         
-        tableView.sectionHeaderHeight = 0
-        tableView.sectionFooterHeight = 20
+        // Убираем лишние отступы
+        //  tableView.sectionHeaderHeight = UITableView.automaticDimension
+        //MARK: - У меня вопрос - почему без дублирования тут - остается какой-то зазор снизу секции, даже при том что у меня написано на 91 строке что футер 0
+        tableView.sectionFooterHeight = Constants.sectionFooterHeight
     }
 }
 
@@ -46,10 +55,18 @@ extension SettingsTableViewController {
     }
     
     // Конфигурация ячейки
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
-        cell.settings = settingsData[indexPath.section][indexPath.row]
-        return cell
+    override func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: SettingsCell.identifier,
+            for: indexPath
+        ) as? SettingsCell
+        let setting = settingsData[indexPath.section][indexPath.row]
+        cell?.configureCell(with: setting)
+        
+        return cell ?? UITableViewCell()
     }
 }
 
@@ -59,22 +76,36 @@ extension SettingsTableViewController {
     // Обработка нажатия на ячейку
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let selectedSetting = settingsData[indexPath.section][indexPath.row]
-        print("Selected: \(selectedSetting.settings.rawValue)")
+        let setting = settingsData[indexPath.section][indexPath.row]
+        let detailVC = setting.makeDetailViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     // Высота заголовка секции
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+        return Constants.sectionHeaderHeight
     }
     
-    // Высота подвала секции
+    // Высота футера секции
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return Constants.sectionFooterHeight
     }
     
-    // Вид подвала секции
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
+    // Цвет хэдера
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = UIView()
+        header.backgroundColor = .systemGroupedBackground
+        return header
+    }
+}
+
+// MARK: - Constants
+extension SettingsTableViewController {
+    enum Constants {
+        static let title = "Настройки"
+        static let separatorInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
+        static let rowHeight: CGFloat = 44
+        static let sectionHeaderHeight: CGFloat = 36
+        static let sectionFooterHeight: CGFloat = 0
     }
 }
