@@ -148,3 +148,16 @@ extension SettingsModel {
         ]
     ]
 }
+
+extension SettingsModel {
+    func makeDetailViewController() -> UIViewController {
+        switch sectionType {
+        case .airplaneMode:
+            return AviaModeDetailViewController(setting: self)
+        case .wifi:
+            return WiFiDetailViewController(setting: self)
+        default:
+            return UniversalDetailViewController(setting: self)
+        }
+    }
+}
