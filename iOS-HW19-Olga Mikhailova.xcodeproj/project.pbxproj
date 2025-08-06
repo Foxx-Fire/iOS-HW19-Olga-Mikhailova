@@ -10,22 +10,9 @@
 		0BE6B0882E37B41500907BE4 /* iOS-HW19-Olga Mikhailova.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-HW19-Olga Mikhailova.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0BE6B09A2E37B41900907BE4 /* Exceptions for "iOS-HW19-Olga Mikhailova" folder in "iOS-HW19-Olga Mikhailova" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Resources/Info.plist,
-			);
-			target = 0BE6B0872E37B41500907BE4 /* iOS-HW19-Olga Mikhailova */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0BE6B08A2E37B41500907BE4 /* iOS-HW19-Olga Mikhailova */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				0BE6B09A2E37B41900907BE4 /* Exceptions for "iOS-HW19-Olga Mikhailova" folder in "iOS-HW19-Olga Mikhailova" target */,
-			);
 			path = "iOS-HW19-Olga Mikhailova";
 			sourceTree = "<group>";
 		};
