@@ -17,7 +17,6 @@ final class WiFiDetailViewController: UIViewController {
     private lazy var wifiImageView: UIImageView = {
         let imageView = UIImageView(image: setting.image)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -25,7 +24,6 @@ final class WiFiDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -33,7 +31,6 @@ final class WiFiDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .secondaryLabel
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -41,7 +38,6 @@ final class WiFiDetailViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Выбрать сеть", for: .normal)
         button.tintColor = .systemBlue
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -51,7 +47,6 @@ final class WiFiDetailViewController: UIViewController {
         stack.axis = .vertical
         stack.spacing = Constants.mediumSpacing
         stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -99,16 +94,9 @@ final class WiFiDetailViewController: UIViewController {
     }
     
     private func setupLayout() {
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(
-                equalTo: view.centerYAnchor,
-                constant: -Constants.offset
-            ),
-            
-            wifiImageView.widthAnchor.constraint(equalToConstant: Constants.iconSize),
-            wifiImageView.heightAnchor.constraint(equalToConstant: Constants.iconSize)
-        ])
+        stackView.centerXToSuperview()
+        stackView.centerYToSuperview(offset: -Constants.offset)
+        wifiImageView.setSize(width: Constants.iconSize, height: Constants.iconSize)
     }
     
     @objc private func joinButtonTapped() {

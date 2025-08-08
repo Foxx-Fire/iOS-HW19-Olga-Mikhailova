@@ -17,7 +17,6 @@ final class AviaModeDetailViewController: UIViewController {
     private lazy var airplaneImageView: UIImageView = {
         let imageView = UIImageView(image: setting.image)
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -25,13 +24,11 @@ final class AviaModeDetailViewController: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var toggleSwitch: UISwitch = {
         let toggle = UISwitch()
-        toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
     
@@ -40,7 +37,6 @@ final class AviaModeDetailViewController: UIViewController {
         stack.axis = .vertical
         stack.spacing = Constants.mediumSpacing
         stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -72,6 +68,7 @@ final class AviaModeDetailViewController: UIViewController {
         stackView.addArrangedSubview(toggleSwitch)
         view.addSubview(stackView)
     }
+    
     private func setupView() {
         view.backgroundColor = .systemBackground
         title = setting.settings.rawValue     
@@ -86,25 +83,9 @@ final class AviaModeDetailViewController: UIViewController {
     }
     
     private func setupLayout() {
-        
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: 20
-            ),
-            stackView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -20
-            ),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            airplaneImageView.widthAnchor.constraint(
-                equalToConstant: Constants.iconSize
-            ),
-            airplaneImageView.heightAnchor.constraint(
-                equalToConstant: Constants.iconSize
-            )
-        ])
+        stackView.horizontalToSuperview(inset: 20)
+        stackView.centerYToSuperview()
+        airplaneImageView.setSize(width: Constants.iconSize, height: Constants.iconSize)
     }
 }
 

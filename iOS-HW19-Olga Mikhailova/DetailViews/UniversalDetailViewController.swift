@@ -18,7 +18,6 @@ final class UniversalDetailViewController: UIViewController {
     private lazy var iconView: UIView = {
         let iconView = UIView()
         iconView.layer.cornerRadius = Constants.smallCornerRadius
-        iconView.translatesAutoresizingMaskIntoConstraints = false
         return iconView
     }()
     
@@ -26,7 +25,6 @@ final class UniversalDetailViewController: UIViewController {
         let imageView = UIImageView()
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -35,7 +33,6 @@ final class UniversalDetailViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
         label.text = setting.settings.rawValue
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -44,13 +41,11 @@ final class UniversalDetailViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16)
         label.textColor = .secondaryLabel
         label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var toggleSwitch: UISwitch = {
         let toggle = UISwitch()
-        toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
     
@@ -109,63 +104,22 @@ final class UniversalDetailViewController: UIViewController {
     }
     
     private func setupLayout() {
+        iconView.topToSuperview(offset: Constants.mediumSpacing, safeArea: true)
+        iconView.leadingToSuperview(offset: Constants.mediumSpacing)
+        iconView.setSize(width: Constants.iconContainerSize, height: Constants.iconContainerSize)
         
-        NSLayoutConstraint.activate([
-            iconView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: Constants.mediumSpacing
-            ),
-            iconView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.mediumSpacing
-            ),
-            iconView.widthAnchor.constraint(
-                equalToConstant: Constants.iconContainerSize
-            ),
-            iconView.heightAnchor.constraint(
-                equalToConstant: Constants.iconContainerSize
-            ),
-            
-            iconImageView.centerXAnchor.constraint(equalTo: iconView.centerXAnchor),
-            iconImageView.centerYAnchor.constraint(equalTo: iconView.centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: Constants.iconSize),
-            iconImageView.heightAnchor.constraint(equalToConstant: Constants.iconSize),
-            
-            titleLabel.topAnchor.constraint(
-                equalTo: iconView.bottomAnchor,
-                constant: Constants.mediumSpacing
-            ),
-            titleLabel.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.mediumSpacing
-            ),
-            titleLabel.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -Constants.mediumSpacing
-            ),
-            
-            descriptionLabel.topAnchor.constraint(
-                equalTo: titleLabel.bottomAnchor,
-                constant: Constants.smallSpacing
-            ),
-            descriptionLabel.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.mediumSpacing
-            ),
-            descriptionLabel.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -Constants.mediumSpacing
-            ),
-            
-            toggleSwitch.topAnchor.constraint(
-                equalTo: descriptionLabel.bottomAnchor,
-                constant: Constants.mediumSpacing
-            ),
-            toggleSwitch.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -Constants.mediumSpacing
-            )
-        ])
+        iconImageView.centerX(to: iconView)
+        iconImageView.centerY(to: iconView)
+        iconImageView.setSize(width: Constants.iconSize, height: Constants.iconSize)
+        
+        titleLabel.pinTopToBottom(of: iconView, offset: Constants.mediumSpacing)
+        titleLabel.horizontalToSuperview(inset: Constants.mediumSpacing)
+        
+        descriptionLabel.pinTopToBottom(of: titleLabel, offset: Constants.smallSpacing)
+        descriptionLabel.horizontalToSuperview(inset: Constants.mediumSpacing)
+        
+        toggleSwitch.pinTopToBottom(of: descriptionLabel, offset: Constants.mediumSpacing)
+        toggleSwitch.trailingToSuperview(offset: Constants.mediumSpacing)
     }
 }
 

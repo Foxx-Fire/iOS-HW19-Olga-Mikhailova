@@ -18,7 +18,6 @@ final class SettingsCell: UITableViewCell {
         let view = UIView()
         view.layer.cornerRadius = Constants.cornerRadius
         view.layer.masksToBounds = true
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -27,7 +26,6 @@ final class SettingsCell: UITableViewCell {
         stack.axis = .horizontal
         stack.spacing = Constants.stackSpacing
         stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -35,7 +33,6 @@ final class SettingsCell: UITableViewCell {
         let image = UIImageView()
         image.tintColor = .white
         image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
         image.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         image.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return image
@@ -52,21 +49,18 @@ final class SettingsCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: Constants.subtitleFontSize)
         label.textColor = .gray
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let switchControl: UISwitch = {
         let switchControl = UISwitch()
         switchControl.onTintColor = .systemBlue
-        switchControl.translatesAutoresizingMaskIntoConstraints = false
         return switchControl
     }()
     
     private let chevronImageView: UIImageView = {
         let image = UIImageView(image: UIImage(systemName: "chevron.right"))
         image.tintColor = .lightGray
-        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
@@ -80,7 +74,6 @@ final class SettingsCell: UITableViewCell {
         label.textAlignment = .center
         label.layer.cornerRadius = Constants.redRoundCornerRadius
         label.clipsToBounds = true
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.isHidden = true
         return label
     }()
@@ -110,58 +103,38 @@ final class SettingsCell: UITableViewCell {
     }
     
     private func setupLayout() {
-        NSLayoutConstraint.activate([
-            // Контейнер иконки
-            iconContainer.widthAnchor.constraint(equalToConstant: Constants.iconContainerSize),
-            iconContainer.heightAnchor.constraint(equalToConstant: Constants.iconContainerSize),
-            
-            // Иконка внутри контейнера
-            iconImageView.centerXAnchor.constraint(equalTo: iconContainer.centerXAnchor),
-            iconImageView.centerYAnchor.constraint(equalTo: iconContainer.centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: Constants.iconSize),
-            iconImageView.heightAnchor.constraint(equalToConstant: Constants.iconSize),
+            // Icon сontainer
+            iconContainer.setSize(width: Constants.iconContainerSize,
+                                  height: Constants.iconContainerSize)
+            // Icon inside container
+        iconImageView.centerX(to: iconContainer)
+        iconImageView.centerY(to: iconContainer)
+        iconImageView.setSize(width: Constants.iconSize,
+                              height: Constants.iconSize)
             
             // Content stack
-            contentStack.leadingAnchor.constraint(
-                equalTo: contentView.leadingAnchor,
-                constant: Constants.contentLeadingInset
-            ),
-            contentStack.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            contentStack.trailingAnchor.constraint(
-                lessThanOrEqualTo: subtitleLabel.leadingAnchor,
-                constant: -Constants.contentTrailingInset
-            ),
+        contentStack.leadingToSuperview(offset: Constants.contentLeadingInset)
+        contentStack.centerY(to: contentView)
+        contentStack.trailing(lessThanOrEqualTo: subtitleLabel.leadingAnchor,
+                              offset: Constants.contentTrailingInset)
             
             // Red round label
-            redRound.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: -Constants.redRoundTrailingInset
-            ),
-            redRound.centerYAnchor.constraint(equalTo: contentStack.centerYAnchor),
-            redRound.widthAnchor.constraint(greaterThanOrEqualToConstant: Constants.redRoundMinSize),
-            redRound.heightAnchor.constraint(equalToConstant: Constants.redRoundMinSize),
+        redRound.trailingToSuperview(offset: Constants.redRoundTrailingInset)
+        redRound.centerY(to: contentStack)
+        redRound.width(greaterThanOrEqualTo: Constants.redRoundMinSize)
+        redRound.setSize(width: 0, height: Constants.redRoundMinSize)
             
             // Subtitle
-            subtitleLabel.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: -Constants.subtitleTrailingInset
-            ),
-            subtitleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            // Switch control
-            switchControl.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: -Constants.switchTrailingInset
-            ),
-            switchControl.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+        subtitleLabel.trailingToSuperview(offset: Constants.subtitleTrailingInset)
+        subtitleLabel.centerY(to: contentView)
+        
+        // Switch control
+        switchControl.trailingToSuperview(offset: Constants.switchTrailingInset)
+        switchControl.centerY(to: contentView)
             
             // Chevron
-            chevronImageView.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: -Constants.chevronTrailingInset
-            ),
-            chevronImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-        ])
+        chevronImageView.trailingToSuperview(offset: Constants.chevronTrailingInset)
+        chevronImageView.centerY(to: contentView)
     }
     
     //MARK: - Configuration
