@@ -91,7 +91,7 @@ final class UniversalDetailViewController: UIViewController {
             pointSize: Constants.iconPointSize,
             weight: .regular
         )
-        iconImageView.image = setting.image.withConfiguration(config)
+        iconImageView.image = setting.image.image
         
         titleLabel.text = setting.settings.rawValue
         descriptionLabel.text = "Подробное описание для \"\(setting.settings.rawValue)\" в стадии разработки"

@@ -15,7 +15,7 @@ final class AviaModeDetailViewController: UIViewController {
     // MARK: - UI Elements
     
     private lazy var airplaneImageView: UIImageView = {
-        let imageView = UIImageView(image: setting.image)
+        let imageView = UIImageView()
         imageView.configureDefault()
         return imageView
     }()
@@ -73,7 +73,7 @@ final class AviaModeDetailViewController: UIViewController {
     }
     
     private func configureViews() {
-        airplaneImageView.image = setting.image
+        airplaneImageView.image = setting.image.image
         airplaneImageView.tintColor = setting.color.uiColor
         titleLabel.text = setting.settings.rawValue
         toggleSwitch.onTintColor = setting.color.uiColor

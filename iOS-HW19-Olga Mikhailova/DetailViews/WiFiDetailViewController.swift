@@ -15,7 +15,7 @@ final class WiFiDetailViewController: UIViewController {
     // MARK: - UI Elements
     
     private lazy var wifiImageView: UIImageView = {
-        let imageView = UIImageView(image: setting.image)
+        let imageView = UIImageView()
         imageView.configureDefault()
         return imageView
     }()
@@ -85,7 +85,7 @@ final class WiFiDetailViewController: UIViewController {
     }
     
     private func configureViews() {
-        wifiImageView.image = setting.image
+        wifiImageView.image = setting.image.image
         wifiImageView.tintColor = setting.color.uiColor
         titleLabel.text = setting.settings.rawValue
         networkLabel.text = "Текущая сеть: \(setting.subtitle ?? "Не подключено")"

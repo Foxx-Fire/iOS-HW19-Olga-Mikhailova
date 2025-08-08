@@ -135,7 +135,7 @@ final class SettingsCell: UITableViewCell {
    func configureCell(with settings: SettingsModel) {
         
         let config = UIImage.SymbolConfiguration(pointSize: 22, weight: .regular)
-        let image = settings.image.withConfiguration(config).withRenderingMode(.alwaysTemplate)
+       let image = settings.image.image
         iconImageView.image = image
         iconContainer.backgroundColor = settings.color.uiColor
         titleLabel.text = settings.settings.rawValue
