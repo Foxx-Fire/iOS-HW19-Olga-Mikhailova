@@ -86,37 +86,43 @@ final class UniversalDetailViewController: UIViewController {
     
     private func configureViews() {
         iconView.backgroundColor = setting.color.uiColor
-        
-        let config = UIImage.SymbolConfiguration(
-            pointSize: Constants.iconPointSize,
-            weight: .regular
-        )
         iconImageView.image = setting.image.image
         
         titleLabel.text = setting.settings.rawValue
         descriptionLabel.text = "Подробное описание для \"\(setting.settings.rawValue)\" в стадии разработки"
         
-        toggleSwitch.isOn = false
-        toggleSwitch.isHidden = !setting.hasSwitch
+        switch setting.cellType {
+        case .withSwitch(let isOn), .switchAndChevron(let isOn):
+            toggleSwitch.isOn = isOn
+            toggleSwitch.isHidden = false
+        default:
+            toggleSwitch.isHidden = true
+        }
+        
         toggleSwitch.onTintColor = .systemBlue
     }
     
     private func setupLayout() {
         iconView.topToSuperview(offset: Constants.mediumSpacing, safeArea: true)
         iconView.leadingToSuperview(offset: Constants.mediumSpacing)
-        iconView.setSize(width: Constants.iconContainerSize, height: Constants.iconContainerSize)
+        iconView.setSize(width: Constants.iconContainerSize,
+                         height: Constants.iconContainerSize)
         
         iconImageView.centerX(to: iconView)
         iconImageView.centerY(to: iconView)
-        iconImageView.setSize(width: Constants.iconSize, height: Constants.iconSize)
+        iconImageView.setSize(width: Constants.iconSize,
+                              height: Constants.iconSize)
         
-        titleLabel.pinTopToBottom(of: iconView, offset: Constants.mediumSpacing)
+        titleLabel.pinTopToBottom(of: iconView,
+                                  offset: Constants.mediumSpacing)
         titleLabel.horizontalToSuperview(inset: Constants.mediumSpacing)
         
-        descriptionLabel.pinTopToBottom(of: titleLabel, offset: Constants.smallSpacing)
+        descriptionLabel.pinTopToBottom(of: titleLabel,
+                                        offset: Constants.smallSpacing)
         descriptionLabel.horizontalToSuperview(inset: Constants.mediumSpacing)
         
-        toggleSwitch.pinTopToBottom(of: descriptionLabel, offset: Constants.mediumSpacing)
+        toggleSwitch.pinTopToBottom(of: descriptionLabel,
+                                    offset: Constants.mediumSpacing)
         toggleSwitch.trailingToSuperview(offset: Constants.mediumSpacing)
     }
 }
