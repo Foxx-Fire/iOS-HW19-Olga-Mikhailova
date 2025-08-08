@@ -22,6 +22,34 @@ extension UIImageView {
         self.tintColor = tint
         self.contentMode = .scaleAspectFit
     }
+    
+    func configureSystemIcon(_ icon: SystemIcon, tint: UIColor) {
+        self.image = icon.image
+        self.tintColor = tint
+        self.contentMode = .scaleAspectFit
+    }
+    
+    func configureAssetIcon(_ icon: AssetIcon, tint: UIColor? = nil) {
+        self.image = icon.image
+        if let tint = tint {
+            self.tintColor = tint
+        }
+        self.contentMode = .scaleAspectFit
+    }
+    
+    func configure(with icon: AppIcon, tintColor: UIColor) {
+        switch icon {
+        case .system(let systemIcon):
+            self.configureSystemIcon(systemIcon, tint: tintColor)
+        case .asset(let assetIcon):
+            self.configureAssetIcon(assetIcon, tint: tintColor)
+        }
+        self.contentMode = .scaleAspectFit
+    }
+    
+    func configureDefault() {
+        self.contentMode = .scaleAspectFit
+    }
 }
 
 extension UILabel {
@@ -39,10 +67,12 @@ extension UILabel {
     
     func configureSecondary(fontSize: CGFloat = 16,
                             textColor: UIColor = .secondaryLabel,
-                            alignment: NSTextAlignment = .natural) {
+                            alignment: NSTextAlignment = .natural,
+                            numberOfLines: Int = 0) {
         self.font = .systemFont(ofSize: fontSize)
         self.textColor = textColor
         self.textAlignment = alignment
+        self.numberOfLines = numberOfLines
     }
     
     func configureBadge(fontSize: CGFloat = 12,
