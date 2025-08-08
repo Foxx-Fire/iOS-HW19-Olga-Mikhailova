@@ -11,7 +11,7 @@ extension SettingsModel {
     static var settings: [[SettingsModel]] = [
         // 1 block
         [SettingsModel(
-            image: UIImage(systemName: "airplane") ?? UIImage(),
+            image: .system(.airplane),
             color: .orange,
             settings: .airplaneMode,
             hasSwitch: true,
@@ -19,7 +19,7 @@ extension SettingsModel {
             sectionType: .airplaneMode
         ),
          SettingsModel(
-            image: UIImage(systemName: "wifi") ?? UIImage(),
+            image: .system(.wifi),
             color: .blue,
             settings: .wifi,
             hasSwitch: false,
@@ -28,7 +28,7 @@ extension SettingsModel {
             sectionType: .wifi
          ),
          SettingsModel(
-            image: UIImage(named: "bluetooth") ?? UIImage(),
+            image: .asset(.bluetooth),
             color: .blue,
             settings: .bluetooth,
             hasSwitch: false,
@@ -37,7 +37,7 @@ extension SettingsModel {
             sectionType: .bluetooth
          ),
          SettingsModel(
-            image: UIImage(systemName: "antenna.radiowaves.left.and.right") ?? UIImage(),
+            image: .system(.antenna),
             color: .green,
             settings: .cellular,
             hasSwitch: false,
@@ -45,7 +45,7 @@ extension SettingsModel {
             sectionType: .cellular
          ),
          SettingsModel(
-            image: UIImage(systemName: "personalhotspot") ?? UIImage(),
+            image: .system(.personalHotspot),
             color: .green,
             settings: .personalHotspot,
             hasSwitch: false,
@@ -53,7 +53,7 @@ extension SettingsModel {
             sectionType: .personalHotspot
          ),
          SettingsModel(
-            image: UIImage(named: "vpn") ?? UIImage(),
+            image: .asset(.vpn),
             color: .blue,
             settings: .vpn,
             hasSwitch: true,
@@ -63,7 +63,7 @@ extension SettingsModel {
         ],
         // 2 block
         [SettingsModel(
-            image: UIImage(systemName: "arrow.rectanglepath") ?? UIImage(),
+            image: .system(.notifications),
             color: .red,
             settings: .notifications,
             hasSwitch: false,
@@ -71,7 +71,7 @@ extension SettingsModel {
             sectionType: .notifications
         ),
          SettingsModel(
-            image: UIImage(systemName: "speaker.wave.3.fill") ?? UIImage(),
+            image: .system(.sounds),
             color: .red,
             settings: .sounds,
             hasSwitch: false,
@@ -79,7 +79,7 @@ extension SettingsModel {
             sectionType: .sounds
          ),
          SettingsModel(
-            image: UIImage(systemName: "moon.fill") ?? UIImage(),
+            image: .system(.moon),
             color: .purple,
             settings: .doNotDisturb,
             hasSwitch: false,
@@ -87,7 +87,7 @@ extension SettingsModel {
             sectionType: .doNotDisturb
          ),
          SettingsModel(
-            image: UIImage(systemName: "hourglass") ?? UIImage(),
+            image: .system(.hourglass),
             color: .purple,
             settings: .screenTime,
             hasSwitch: false,
@@ -97,7 +97,7 @@ extension SettingsModel {
         ],
         // 3 block
         [SettingsModel(
-            image: UIImage(systemName: "gearshape") ?? UIImage(),
+            image: .system(.gear),
             color: .gray,
             settings: .general,
             hasSwitch: false,
@@ -106,7 +106,7 @@ extension SettingsModel {
             sectionType: .general
         ),
          SettingsModel(
-            image: UIImage(systemName: "slider.horizontal.2.square.on.square") ?? UIImage(),
+            image: .system(.controlCenter),
             color: .gray,
             settings: .controlCenter,
             hasSwitch: false,
@@ -114,7 +114,7 @@ extension SettingsModel {
             sectionType: .controlCenter
          ),
          SettingsModel(
-            image: UIImage(systemName: "textformat.size") ?? UIImage(),
+            image: .system(.display),
             color: .blue,
             settings: .display,
             hasSwitch: false,
@@ -122,7 +122,7 @@ extension SettingsModel {
             sectionType: .display
          ),
          SettingsModel(
-            image: UIImage(systemName: "square.grid.3x3.middle.filled") ?? UIImage(),
+            image: .system(.homeScreen),
             color: .blue,
             settings: .homeScreen,
             hasSwitch: false,
@@ -130,7 +130,7 @@ extension SettingsModel {
             sectionType: .homeScreen
          ),
          SettingsModel(
-            image: UIImage(systemName: "figure.arms.open") ?? UIImage(),
+            image: .system(.universalAccess),
             color: .blue,
             settings: .universalAccess,
             hasSwitch: false,
@@ -138,7 +138,7 @@ extension SettingsModel {
             sectionType: .universalAccess
          ),
          SettingsModel(
-            image: UIImage(systemName: "photo") ?? UIImage(),
+            image: .system(.wallpaper),
             color: .blue,
             settings: .wallpaper,
             hasSwitch: false,
@@ -161,3 +161,4 @@ extension SettingsModel {
         }
     }
 }
+

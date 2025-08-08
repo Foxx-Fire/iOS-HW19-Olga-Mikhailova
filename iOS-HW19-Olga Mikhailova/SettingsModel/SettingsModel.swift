@@ -66,7 +66,7 @@ enum SettingsSectionType {
 }
 
 struct SettingsModel: Hashable {
-    var image: UIImage
+    var image: AppIcon
     var color: BackgroundColors
     var settings: SettingsSections
     var hasSwitch: Bool
