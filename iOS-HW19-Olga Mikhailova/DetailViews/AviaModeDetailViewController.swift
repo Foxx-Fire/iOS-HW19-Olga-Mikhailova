@@ -8,6 +8,7 @@
 import UIKit
 
 final class AviaModeDetailViewController: UIViewController {
+    
     // MARK: - Properties
     
     private let setting: SettingsModel
@@ -83,7 +84,10 @@ final class AviaModeDetailViewController: UIViewController {
     private func setupLayout() {
         stackView.horizontalToSuperview(inset: 20)
         stackView.centerYToSuperview()
-        airplaneImageView.setSize(width: Constants.iconSize, height: Constants.iconSize)
+        airplaneImageView.setSize(
+            width: Constants.iconSize,
+            height: Constants.iconSize
+        )
     }
 }
 
