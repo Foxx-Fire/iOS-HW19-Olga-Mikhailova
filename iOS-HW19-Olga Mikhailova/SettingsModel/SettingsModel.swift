@@ -65,12 +65,21 @@ enum SettingsSectionType {
     case wallpaper
 }
 
+enum CellType: Equatable, Hashable {
+    case basic
+    case withSubtitle(String)
+    case withSwitch(isOn: Bool)
+    case withChevron
+    case badgeAndChevron(String)
+    case subtitleAndChevron(String)
+    case switchAndChevron(isOn: Bool)
+}
+
 struct SettingsModel: Hashable {
-    var image: UIImage
+    var image: AppIcon
     var color: BackgroundColors
     var settings: SettingsSections
-    var hasSwitch: Bool
-    var hasChevron: Bool
+    var cellType: CellType
     var subtitle: String?
     var redRound: String?
     let sectionType: SettingsSectionType

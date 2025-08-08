@@ -8,6 +8,7 @@
 import UIKit
 
 final class AviaModeDetailViewController: UIViewController {
+    
     // MARK: - Properties
     
     private let setting: SettingsModel
@@ -15,32 +16,26 @@ final class AviaModeDetailViewController: UIViewController {
     // MARK: - UI Elements
     
     private lazy var airplaneImageView: UIImageView = {
-        let imageView = UIImageView(image: setting.image)
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let imageView = UIImageView()
+        imageView.configureDefault()
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.configureTitle(alignment: .center)
         return label
     }()
     
     private lazy var toggleSwitch: UISwitch = {
         let toggle = UISwitch()
-        toggle.translatesAutoresizingMaskIntoConstraints = false
+        toggle.configureDefault()
         return toggle
     }()
     
     private let stackView: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = Constants.mediumSpacing
-        stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.configureVertical(spacing: Constants.mediumSpacing)
         return stack
     }()
     
@@ -72,13 +67,14 @@ final class AviaModeDetailViewController: UIViewController {
         stackView.addArrangedSubview(toggleSwitch)
         view.addSubview(stackView)
     }
+    
     private func setupView() {
         view.backgroundColor = .systemBackground
         title = setting.settings.rawValue     
     }
     
     private func configureViews() {
-        airplaneImageView.image = setting.image
+        airplaneImageView.image = setting.image.image
         airplaneImageView.tintColor = setting.color.uiColor
         titleLabel.text = setting.settings.rawValue
         toggleSwitch.onTintColor = setting.color.uiColor
@@ -86,25 +82,12 @@ final class AviaModeDetailViewController: UIViewController {
     }
     
     private func setupLayout() {
-        
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: 20
-            ),
-            stackView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: -20
-            ),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            airplaneImageView.widthAnchor.constraint(
-                equalToConstant: Constants.iconSize
-            ),
-            airplaneImageView.heightAnchor.constraint(
-                equalToConstant: Constants.iconSize
-            )
-        ])
+        stackView.horizontalToSuperview(inset: 20)
+        stackView.centerYToSuperview()
+        airplaneImageView.setSize(
+            width: Constants.iconSize,
+            height: Constants.iconSize
+        )
     }
 }
 

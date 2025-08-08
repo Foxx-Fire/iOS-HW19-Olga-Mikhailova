@@ -50,7 +50,10 @@ extension SettingsTableViewController {
     }
     
     // Количество строк в секции
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         return settingsData[section].count
     }
     
@@ -74,7 +77,10 @@ extension SettingsTableViewController {
 
 extension SettingsTableViewController {
     // Обработка нажатия на ячейку
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
         tableView.deselectRow(at: indexPath, animated: true)
         let setting = settingsData[indexPath.section][indexPath.row]
         let detailVC = setting.makeDetailViewController()
@@ -82,17 +88,26 @@ extension SettingsTableViewController {
     }
     
     // Высота заголовка секции
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(
+        _ tableView: UITableView,
+        heightForHeaderInSection section: Int
+    ) -> CGFloat {
         return Constants.sectionHeaderHeight
     }
     
     // Высота футера секции
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    override func tableView(
+        _ tableView: UITableView,
+        heightForFooterInSection section: Int
+    ) -> CGFloat {
         return Constants.sectionFooterHeight
     }
     
     // Цвет хэдера
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(
+        _ tableView: UITableView,
+        viewForHeaderInSection section: Int
+    ) -> UIView? {
         let header = UIView()
         header.backgroundColor = .systemGroupedBackground
         return header
@@ -103,7 +118,12 @@ extension SettingsTableViewController {
 extension SettingsTableViewController {
     enum Constants {
         static let title = "Настройки"
-        static let separatorInsets = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
+        static let separatorInsets = UIEdgeInsets(
+            top: 0,
+            left: 50,
+            bottom: 0,
+            right: 0
+        )
         static let rowHeight: CGFloat = 44
         static let sectionHeaderHeight: CGFloat = 36
         static let sectionFooterHeight: CGFloat = 0

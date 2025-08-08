@@ -11,138 +11,119 @@ extension SettingsModel {
     static var settings: [[SettingsModel]] = [
         // 1 block
         [SettingsModel(
-            image: UIImage(systemName: "airplane") ?? UIImage(),
+            image: .system(.airplane),
             color: .orange,
             settings: .airplaneMode,
-            hasSwitch: true,
-            hasChevron: false,
+            cellType: .withSwitch(isOn: true),
             sectionType: .airplaneMode
         ),
          SettingsModel(
-            image: UIImage(systemName: "wifi") ?? UIImage(),
+            image: .system(.wifi),
             color: .blue,
             settings: .wifi,
-            hasSwitch: false,
-            hasChevron: true,
-            subtitle: "Не подключено",
+            cellType: .subtitleAndChevron("Не подключено"),
             sectionType: .wifi
          ),
          SettingsModel(
-            image: UIImage(named: "bluetooth") ?? UIImage(),
+            image: .asset(.bluetooth),
             color: .blue,
             settings: .bluetooth,
-            hasSwitch: false,
-            hasChevron: true,
-            subtitle: "Вкл.",
+            cellType: .subtitleAndChevron("Вкл."),
             sectionType: .bluetooth
          ),
          SettingsModel(
-            image: UIImage(systemName: "antenna.radiowaves.left.and.right") ?? UIImage(),
+            image: .system(.antenna),
             color: .green,
             settings: .cellular,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .cellular
          ),
          SettingsModel(
-            image: UIImage(systemName: "personalhotspot") ?? UIImage(),
+            image: .system(.personalHotspot),
             color: .green,
             settings: .personalHotspot,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .personalHotspot
          ),
          SettingsModel(
-            image: UIImage(named: "vpn") ?? UIImage(),
+            image: .asset(.vpn),
             color: .blue,
             settings: .vpn,
-            hasSwitch: true,
-            hasChevron: false,
+            cellType: .withSwitch(isOn: true),
             sectionType: .vpn
          )
         ],
         // 2 block
         [SettingsModel(
-            image: UIImage(systemName: "arrow.rectanglepath") ?? UIImage(),
+            image: .system(.notifications),
             color: .red,
             settings: .notifications,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .notifications
         ),
          SettingsModel(
-            image: UIImage(systemName: "speaker.wave.3.fill") ?? UIImage(),
+            image: .system(.sounds),
             color: .red,
             settings: .sounds,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .sounds
          ),
          SettingsModel(
-            image: UIImage(systemName: "moon.fill") ?? UIImage(),
+            image: .system(.moon),
             color: .purple,
             settings: .doNotDisturb,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .doNotDisturb
          ),
          SettingsModel(
-            image: UIImage(systemName: "hourglass") ?? UIImage(),
+            image: .system(.hourglass),
             color: .purple,
             settings: .screenTime,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .screenTime
          )
         ],
         // 3 block
         [SettingsModel(
-            image: UIImage(systemName: "gearshape") ?? UIImage(),
+            image: .system(.gear),
             color: .gray,
             settings: .general,
-            hasSwitch: false,
-            hasChevron: true,
-            redRound: "1",
+            cellType: .badgeAndChevron("1"),
             sectionType: .general
         ),
          SettingsModel(
-            image: UIImage(systemName: "slider.horizontal.2.square.on.square") ?? UIImage(),
+            image: .system(.controlCenter),
             color: .gray,
             settings: .controlCenter,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .controlCenter
          ),
          SettingsModel(
-            image: UIImage(systemName: "textformat.size") ?? UIImage(),
+            image: .system(.display),
             color: .blue,
             settings: .display,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .display
          ),
          SettingsModel(
-            image: UIImage(systemName: "square.grid.3x3.middle.filled") ?? UIImage(),
+            image: .system(.homeScreen),
             color: .blue,
             settings: .homeScreen,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .homeScreen
          ),
          SettingsModel(
-            image: UIImage(systemName: "figure.arms.open") ?? UIImage(),
+            image: .system(.universalAccess),
             color: .blue,
             settings: .universalAccess,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .universalAccess
          ),
          SettingsModel(
-            image: UIImage(systemName: "photo") ?? UIImage(),
+            image: .system(.wallpaper),
             color: .blue,
             settings: .wallpaper,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .wallpaper
          )
         ]
@@ -161,3 +142,4 @@ extension SettingsModel {
         }
     }
 }
+
