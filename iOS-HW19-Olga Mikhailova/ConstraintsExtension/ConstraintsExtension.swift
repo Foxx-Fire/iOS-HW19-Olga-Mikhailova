@@ -11,15 +11,30 @@ extension UIView {
     
     //MARK: - Для констрейнтов с lessThanOrEqualTo/greaterThanOrEqualTo
     
-    func trailing(lessThanOrEqualTo anchor: NSLayoutAnchor<NSLayoutXAxisAnchor>,
-                  offset: CGFloat = 0) {
+    func trailing(
+        lessThanOrEqualTo anchor: NSLayoutAnchor<NSLayoutXAxisAnchor>,
+        offset: CGFloat = 0
+    ) {
         translatesAutoresizingMaskIntoConstraints = false
-        trailingAnchor.constraint(lessThanOrEqualTo: anchor, constant: -offset).isActive = true
+        trailingAnchor.constraint(
+            lessThanOrEqualTo: anchor,
+            constant: -offset
+        ).isActive = true
+    }
+    
+    func trailing(lessThanOrEqualTo view: UIView, offset: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        trailingAnchor.constraint(
+            lessThanOrEqualTo: view.trailingAnchor,
+            constant: -offset
+        ).isActive = true
     }
     
     func width(greaterThanOrEqualTo constant: CGFloat) {
         translatesAutoresizingMaskIntoConstraints = false
-        widthAnchor.constraint(greaterThanOrEqualToConstant: constant).isActive = true
+        widthAnchor.constraint(
+            greaterThanOrEqualToConstant: constant
+        ).isActive = true
     }
     
     // MARK: - Size constraints
@@ -46,13 +61,19 @@ extension UIView {
     func leadingToSuperview(offset: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: offset).isActive = true
+        leadingAnchor.constraint(
+            equalTo: superview.leadingAnchor,
+            constant: offset
+        ).isActive = true
     }
     
     func trailingToSuperview(offset: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -offset).isActive = true
+        trailingAnchor.constraint(
+            equalTo: superview.trailingAnchor,
+            constant: -offset
+        ).isActive = true
     }
     
     func topToSuperview(offset: CGFloat = 0, safeArea: Bool = false) {
@@ -85,7 +106,10 @@ extension UIView {
     func centerXToSuperview(offset: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        centerXAnchor.constraint(equalTo: superview.centerXAnchor, constant: offset).isActive = true
+        centerXAnchor.constraint(
+            equalTo: superview.centerXAnchor,
+            constant: offset
+        ).isActive = true
     }
     
     // MARK: - Center positioning with offset
@@ -93,7 +117,10 @@ extension UIView {
     func centerYToSuperview(offset: CGFloat = 0) {
         guard let superview = superview else { return }
         translatesAutoresizingMaskIntoConstraints = false
-        centerYAnchor.constraint(equalTo: superview.centerYAnchor, constant: offset).isActive = true
+        centerYAnchor.constraint(
+            equalTo: superview.centerYAnchor,
+            constant: offset
+        ).isActive = true
     }
     
     // MARK: - Relative positioning
@@ -106,6 +133,16 @@ extension UIView {
     func centerY(to view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    func leading(to anchor: NSLayoutXAxisAnchor, offset: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        leadingAnchor.constraint(equalTo: anchor, constant: offset).isActive = true
+    }
+    
+    func trailing(to anchor: NSLayoutXAxisAnchor, offset: CGFloat = 0) {
+        translatesAutoresizingMaskIntoConstraints = false
+        trailingAnchor.constraint(equalTo: anchor, constant: offset).isActive = true
     }
     
     func pinTopToBottom(of view: UIView, offset: CGFloat = 0) {
