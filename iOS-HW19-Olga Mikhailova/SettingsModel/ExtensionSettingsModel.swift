@@ -14,50 +14,42 @@ extension SettingsModel {
             image: .system(.airplane),
             color: .orange,
             settings: .airplaneMode,
-            hasSwitch: true,
-            hasChevron: false,
+            cellType: .withSwitch(isOn: true),
             sectionType: .airplaneMode
         ),
          SettingsModel(
             image: .system(.wifi),
             color: .blue,
             settings: .wifi,
-            hasSwitch: false,
-            hasChevron: true,
-            subtitle: "Не подключено",
+            cellType: .subtitleAndChevron("Не подключено"),
             sectionType: .wifi
          ),
          SettingsModel(
             image: .asset(.bluetooth),
             color: .blue,
             settings: .bluetooth,
-            hasSwitch: false,
-            hasChevron: true,
-            subtitle: "Вкл.",
+            cellType: .subtitleAndChevron("Вкл."),
             sectionType: .bluetooth
          ),
          SettingsModel(
             image: .system(.antenna),
             color: .green,
             settings: .cellular,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .cellular
          ),
          SettingsModel(
             image: .system(.personalHotspot),
             color: .green,
             settings: .personalHotspot,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .personalHotspot
          ),
          SettingsModel(
             image: .asset(.vpn),
             color: .blue,
             settings: .vpn,
-            hasSwitch: true,
-            hasChevron: false,
+            cellType: .withSwitch(isOn: true),
             sectionType: .vpn
          )
         ],
@@ -66,32 +58,28 @@ extension SettingsModel {
             image: .system(.notifications),
             color: .red,
             settings: .notifications,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .notifications
         ),
          SettingsModel(
             image: .system(.sounds),
             color: .red,
             settings: .sounds,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .sounds
          ),
          SettingsModel(
             image: .system(.moon),
             color: .purple,
             settings: .doNotDisturb,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .doNotDisturb
          ),
          SettingsModel(
             image: .system(.hourglass),
             color: .purple,
             settings: .screenTime,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .screenTime
          )
         ],
@@ -100,49 +88,42 @@ extension SettingsModel {
             image: .system(.gear),
             color: .gray,
             settings: .general,
-            hasSwitch: false,
-            hasChevron: true,
-            redRound: "1",
+            cellType: .badgeAndChevron("1"),
             sectionType: .general
         ),
          SettingsModel(
             image: .system(.controlCenter),
             color: .gray,
             settings: .controlCenter,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .controlCenter
          ),
          SettingsModel(
             image: .system(.display),
             color: .blue,
             settings: .display,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .display
          ),
          SettingsModel(
             image: .system(.homeScreen),
             color: .blue,
             settings: .homeScreen,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .homeScreen
          ),
          SettingsModel(
             image: .system(.universalAccess),
             color: .blue,
             settings: .universalAccess,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .universalAccess
          ),
          SettingsModel(
             image: .system(.wallpaper),
             color: .blue,
             settings: .wallpaper,
-            hasSwitch: false,
-            hasChevron: true,
+            cellType: .withChevron,
             sectionType: .wallpaper
          )
         ]
