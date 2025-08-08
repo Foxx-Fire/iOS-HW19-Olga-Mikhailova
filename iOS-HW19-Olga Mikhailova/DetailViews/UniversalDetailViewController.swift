@@ -17,20 +17,19 @@ final class UniversalDetailViewController: UIViewController {
     
     private lazy var iconView: UIView = {
         let iconView = UIView()
-        iconView.layer.cornerRadius = Constants.smallCornerRadius
+        view.layer.cornerRadius = Constants.smallCornerRadius
         return iconView
     }()
     
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = .white
-        imageView.contentMode = .scaleAspectFit
+        imageView.configureDefault(tintColor: .white)
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        label.configureTitle()
         label.text = setting.settings.rawValue
         label.numberOfLines = 0
         return label
@@ -38,14 +37,13 @@ final class UniversalDetailViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .secondaryLabel
-        label.numberOfLines = 0
+        label.configureSecondary(numberOfLines: 0)
         return label
     }()
     
     private lazy var toggleSwitch: UISwitch = {
         let toggle = UISwitch()
+        toggle.configureDefault()
         return toggle
     }()
     

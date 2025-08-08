@@ -23,16 +23,13 @@ final class SettingsCell: UITableViewCell {
     
     private lazy var contentStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [iconContainer, titleLabel])
-        stack.axis = .horizontal
-        stack.spacing = Constants.stackSpacing
-        stack.alignment = .center
+        stack.configureHorizontal(spacing: Constants.stackSpacing)
         return stack
     }()
     
     private let iconImageView: UIImageView = {
         let image = UIImageView()
-        image.tintColor = .white
-        image.contentMode = .scaleAspectFit
+        image.configureDefault(tintColor: .white)
         image.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         image.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return image
@@ -40,40 +37,36 @@ final class SettingsCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: Constants.titleFontSize)
+        label.configureTitle(fontSize: Constants.titleFontSize)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
     
     private let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: Constants.subtitleFontSize)
+        label.configureSecondary(fontSize: Constants.subtitleFontSize, textColor: .gray)
         label.textColor = .gray
         return label
     }()
     
     private let switchControl: UISwitch = {
         let switchControl = UISwitch()
-        switchControl.onTintColor = .systemBlue
+        switchControl.configureDefault(onTintColor: .systemBlue)
         return switchControl
     }()
     
     private let chevronImageView: UIImageView = {
-        let image = UIImageView(image: UIImage(systemName: "chevron.right"))
-        image.tintColor = .lightGray
+        let image = UIImageView()
+        image.configureSystemIcon(name: "chevron.right", tint: .lightGray)
         return image
     }()
     
     private lazy var redRound: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(
-            ofSize: Constants.redRoundFontSize,
-            weight: .semibold)
-        label.textColor = .white
-        label.backgroundColor = .systemRed
-        label.textAlignment = .center
-        label.layer.cornerRadius = Constants.redRoundCornerRadius
-        label.clipsToBounds = true
+        label.configureBadge(
+            fontSize: Constants.redRoundFontSize,
+            cornerRadius: Constants.redRoundCornerRadius
+        )
         label.isHidden = true
         return label
     }()

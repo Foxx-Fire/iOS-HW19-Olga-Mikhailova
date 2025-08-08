@@ -16,27 +16,25 @@ final class AviaModeDetailViewController: UIViewController {
     
     private lazy var airplaneImageView: UIImageView = {
         let imageView = UIImageView(image: setting.image)
-        imageView.contentMode = .scaleAspectFit
+        imageView.configureDefault()
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.configureTitle(alignment: .center)
         return label
     }()
     
     private lazy var toggleSwitch: UISwitch = {
         let toggle = UISwitch()
+        toggle.configureDefault()
         return toggle
     }()
     
     private let stackView: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = Constants.mediumSpacing
-        stack.alignment = .center
+        stack.configureVertical(spacing: Constants.mediumSpacing)
         return stack
     }()
     

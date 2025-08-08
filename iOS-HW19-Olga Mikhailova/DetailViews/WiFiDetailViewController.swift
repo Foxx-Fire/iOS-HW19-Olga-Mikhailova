@@ -16,37 +16,35 @@ final class WiFiDetailViewController: UIViewController {
     
     private lazy var wifiImageView: UIImageView = {
         let imageView = UIImageView(image: setting.image)
-        imageView.contentMode = .scaleAspectFit
+        imageView.configureDefault()
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.configureTitle(alignment: .center)
         return label
     }()
     
     private lazy var networkLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
-        label.textColor = .secondaryLabel
+        label.configureSecondary(alignment: .center)
         return label
     }()
     
     private lazy var joinButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Выбрать сеть", for: .normal)
-        button.tintColor = .systemBlue
-        button.addTarget(self, action: #selector(joinButtonTapped), for: .touchUpInside)
+        button.configureSystemButton(
+            title: "Выбрать сеть",
+            target: self,
+            action: #selector(joinButtonTapped)
+            )
         return button
     }()
     
     private let stackView: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = Constants.mediumSpacing
-        stack.alignment = .center
+        stack.configureVertical(spacing: Constants.mediumSpacing)
         return stack
     }()
     
